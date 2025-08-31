@@ -25,3 +25,7 @@ flutter_launcher_icons:
 
 flutter:
   uses-material-design: true
+
+  assets:
+    - assets/Mobikad_Logo.png
+    - assets/backgroundImage.jpg
