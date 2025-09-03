@@ -29,3 +29,4 @@ flutter:
   assets:
     - assets/Mobikad_Logo.png
     - assets/backgroundImage.jpg
+    # - assets/

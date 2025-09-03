@@ -9,13 +9,44 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('This is Mobikad Application'),
+        title: Text('Mobikad'),
         centerTitle: true,
         backgroundColor: Colors.blue[900],
         foregroundColor: Colors.white,
       ),
-      body: Center(
-        child: Image(image: AssetImage("assets/backgroundImage.jpg")), // Mobikad Background Image
+      body: Row(
+        children: <Widget>[
+          Expanded(
+            child: Container(
+              padding: EdgeInsets.all(30.0),
+              color: Colors.blue[900],
+              child: Text(
+                "First Container",
+                style: TextStyle(color: Colors.white),
+              ),
+            ),
+          ),
+          Expanded(
+            child: Container(
+              padding: EdgeInsets.all(30.0),
+              color: Colors.blue[900],
+              child: Text(
+                "Second Container",
+                style: TextStyle(color: Colors.white),
+              ),
+            ),
+          ),
+          Expanded(
+            child: Container(
+              padding: EdgeInsets.all(30.0),
+              color: Colors.blue[900],
+              child: Text(
+                "Third Container",
+                style: TextStyle(color: Colors.white),
+              ),
+            ),
+          ),
+        ],
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
