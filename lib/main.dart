@@ -1,59 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:mobikad/screens/login_screen.dart';
 
 void main() {
-  runApp(MaterialApp(home: Home()));
+  runApp(const MyApp());
 }
 
-class Home extends StatelessWidget {
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Mobikad'),
-        centerTitle: true,
-        backgroundColor: Colors.blue[900],
-        foregroundColor: Colors.white,
-      ),
-      body: Row(
-        children: <Widget>[
-          Expanded(
-            child: Container(
-              padding: EdgeInsets.all(30.0),
-              color: Colors.blue[900],
-              child: Text(
-                "First Container",
-                style: TextStyle(color: Colors.white),
-              ),
-            ),
-          ),
-          Expanded(
-            child: Container(
-              padding: EdgeInsets.all(30.0),
-              color: Colors.blue[900],
-              child: Text(
-                "Second Container",
-                style: TextStyle(color: Colors.white),
-              ),
-            ),
-          ),
-          Expanded(
-            child: Container(
-              padding: EdgeInsets.all(30.0),
-              color: Colors.blue[900],
-              child: Text(
-                "Third Container",
-                style: TextStyle(color: Colors.white),
-              ),
-            ),
-          ),
-        ],
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        backgroundColor: Colors.blue[900],
-        foregroundColor: Colors.white,
-        child: Text("Click me"),
-      ),
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: LoginScreen(),
     );
   }
 }
