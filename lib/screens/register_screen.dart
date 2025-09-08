@@ -2,20 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:mobikad/components/button_custom.dart';
 import 'package:mobikad/components/textfield_custom.dart';
 
-class LoginScreen extends StatefulWidget {
+class RegisterScreen extends StatefulWidget {
   final void Function()? onTap;
-
-  const LoginScreen({super.key, required this.onTap});
+  const RegisterScreen({ super.key, required this.onTap });
 
   @override
-  _LoginScreenState createState() => _LoginScreenState();
+  _RegisterScreenState createState() => _RegisterScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _RegisterScreenState extends State<RegisterScreen> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
+  final confirmPasswordController = TextEditingController();
 
-  void handleUserLogin() {}
+  void handleAccountRegister() {
+
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -60,19 +62,27 @@ class _LoginScreenState extends State<LoginScreen> {
 
                 SizedBox(height: 20),
 
-                ButtonCustom(onTap: handleUserLogin, text: "Login"),
+                TextFieldCustom(
+                  controller: confirmPasswordController,
+                  hintText: "Confirm Password",
+                  obscureText: true,
+                ),
+
+                SizedBox(height: 20),
+
+                ButtonCustom(onTap: handleAccountRegister, text: "Register"),
 
                 SizedBox(height: 20),
 
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text("Not a member?"),
+                    Text("Already a member?"),
                     SizedBox(width: 4),
                     GestureDetector(
                       onTap: widget.onTap,
                       child: Text(
-                        "Register now",
+                        "Login now",
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           color: Colors.blue,
