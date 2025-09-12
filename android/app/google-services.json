@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "856085266304",
+    "project_id": "mobikadproject",
+    "storage_bucket": "mobikadproject.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:856085266304:android:47f60dddb692dc06154b65",
+        "android_client_info": {
+          "package_name": "com.example.mobikad"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBoMn0U5zjKGjNWd9Za8oy0Pqs7sWm5Dkc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
