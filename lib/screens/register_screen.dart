@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:mobikad/components/button_custom.dart';
 import 'package:mobikad/components/textfield_custom.dart';
+import 'package:mobikad/services/auth/auth_service.dart';
+import 'package:provider/provider.dart';
 
 class RegisterScreen extends StatefulWidget {
   final void Function()? onTap;
-  const RegisterScreen({ super.key, required this.onTap });
+  const RegisterScreen({super.key, required this.onTap});
 
   @override
   _RegisterScreenState createState() => _RegisterScreenState();
@@ -15,8 +17,24 @@ class _RegisterScreenState extends State<RegisterScreen> {
   final passwordController = TextEditingController();
   final confirmPasswordController = TextEditingController();
 
-  void handleAccountRegister() {
+  void handleAccountRegister() async {
+    if (passwordController.text != passwordController.text) { 
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text("Passwords do not match")));
+      return;
+    }
 
+    final authService = Provider.of<AuthService>(context, listen: false);
+
+    try {
+      await authService.signUpWithEmailAndPassword(emailController.text, passwordController.text,);
+
+    } catch (e) {
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text(e.toString())));
+    }
   }
 
   @override
