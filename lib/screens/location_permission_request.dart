@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 
-import 'package:mobikad/screens/map_screen.dart';
+import 'package:mobikad/screens/home_screen.dart';
 import 'package:mobikad/components/button_custom.dart';
 
 class LocationPermissionRequest extends StatelessWidget {
@@ -38,7 +38,7 @@ class LocationPermissionRequest extends StatelessWidget {
       return;
     }
 
-    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => MapScreen()));
+    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HomeScreen()));
   }
 
   
