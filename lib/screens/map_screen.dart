@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:latlong2/latlong.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart'; // ✅ Use Google Maps LatLng
 import 'package:geolocator/geolocator.dart';
 
-import 'package:mobikad/components/map_view.dart';
+import 'package:mobikad/components/map_view.dart'; // ✅ Your updated MapView (Google Maps)
 
 class MapScreen extends StatefulWidget {
   const MapScreen({super.key});
@@ -12,7 +12,7 @@ class MapScreen extends StatefulWidget {
 }
 
 class _MapScreenState extends State<MapScreen> {
-  LatLng? _currentLocation;
+  LatLng? _currentLocation; // ✅ google_maps_flutter LatLng
 
   @override
   void initState() {
@@ -28,34 +28,34 @@ class _MapScreenState extends State<MapScreen> {
     serviceEnabled = await Geolocator.isLocationServiceEnabled();
     if (!serviceEnabled) {
       await Geolocator.openLocationSettings();
-      return; // location services are disabled
+      return;
     }
 
     // Check permission
     permission = await Geolocator.checkPermission();
-
     if (permission == LocationPermission.denied) {
       permission = await Geolocator.requestPermission();
       if (permission == LocationPermission.denied) {
+        if (!mounted) return;
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(content: Text('Location permission denied')),
         );
-        return; // permission denied
+        return;
       }
     }
 
     if (permission == LocationPermission.deniedForever) {
+      if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
           content: Text(
-              'Location permission is permanently denied. Please enable it in settings.'),
+            'Location permission is permanently denied. Please enable it in settings.',
+          ),
         ),
       );
       await Geolocator.openAppSettings();
       return;
     }
-
-    if (!mounted) return;
 
     // Get current position
     Position position = await Geolocator.getCurrentPosition(
@@ -63,7 +63,7 @@ class _MapScreenState extends State<MapScreen> {
     );
 
     if (!mounted) return;
-    
+
     setState(() {
       _currentLocation = LatLng(position.latitude, position.longitude);
     });
@@ -74,7 +74,7 @@ class _MapScreenState extends State<MapScreen> {
     return Scaffold(
       body: _currentLocation == null
           ? const Center(child: CircularProgressIndicator())
-          : MapView(location: _currentLocation!),
+          : MapView(location: _currentLocation!), // ✅ Safe because of the ternary
     );
   }
 }

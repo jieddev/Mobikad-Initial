@@ -1,42 +1,26 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_map/flutter_map.dart';
-import 'package:latlong2/latlong.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class MapView extends StatelessWidget {
   final LatLng location;
 
-  const MapView({
-    Key? key,
-    required this.location,
-  }) : super(key: key);
+  const MapView({super.key, required this.location});
 
   @override
   Widget build(BuildContext context) {
-    return FlutterMap(
-      options: MapOptions(
-        initialCenter: location,
-        initialZoom: 16,
-      ),
-      children: [
-        TileLayer(
-          urlTemplate: "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
-          userAgentPackageName: 'com.example.mobikad',
-        ),
-        MarkerLayer(
-          markers: [
-            Marker(
-              point: location,
-              width: 80,
-              height: 80,
-              child: const Icon(
-                Icons.location_on,
-                size: 40,
-                color: Colors.red,
-              ),
-            ),
-          ],
-        ),
-      ],
+    return GoogleMap(
+      initialCameraPosition: CameraPosition(target: location, zoom: 16),
+      markers: {
+        Marker(
+          markerId: const MarkerId("selected-location"),
+          position: location,
+          icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueRed),
+        )
+      },
+      mapType: MapType.normal,
+      myLocationButtonEnabled: false,
+      zoomControlsEnabled: true,
+
     );
   }
 }
